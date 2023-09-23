@@ -4,12 +4,230 @@ author: "Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham Un
 format: 
   revealjs:
     slide-number: true
+    incremental: true
 ---
 
-## Quarto
+<style>
+.highlighted {
+  background-color: yellow;
+}
+</style>
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## purrr
+
+![](purrr_logo.png){fig-align="center"}
+
+Ahhh, cute cat...
+
+## Scary functional programming
+
+![](purrr_logo.png){fig-align="center"}
+
+Run away now!
+
+## Aims
+
+* Not scary!
+
+. . .  
+
+:::{.nonincremental}
+* Practical intro to purrr
+* Focus on a "mental model" which helped me
+* Simple examples
+:::
+
+. . .  
+
+Functional programming is something we can save for another day (and another speaker!)
+
+## The package website
+
+From the tidyverse documentation: 
+
+> "the best place to start is the family of map() functions which allow you to replace many for loops with code that is both more succinct and easier to read."
+
+and: 
+
+> "The best place to learn about the map() functions is the [iteration chapter in R for data science.](https://r4ds.had.co.nz/iteration.html)"
+
+::: {.notes}
+Purrr is part of the tidyverse, and both of these comments are true.  
+
+The first hints at the fact that once you grasp the map() function, you'll already be able to use it's close relations in helpful ways.  
+
+The second says the best place to learn is Hadley's book R for Data Science.  In the meantime I hope this presentation helps!
+:::
+
+## Looping
 
 ```{r}
-1 + 1
+#| echo: true
+#| output-location: fragment
+
+# we need a vector to iterate over
+food <- c("croissant", "baked potato")
+
+# we need to create a place to put the results (the right size)
+result <- vector("character", length(food))
+
+# here's the loop
+for(i in seq_along(food)){
+  
+  result[[i]] <- paste("Hot", food[[i]])
+  
+}
+
+result
+
 ```
+
+## Mapping
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# we still need a vector to iterate over
+food <- c("croissant", "baked potato")
+
+# we create a function to do the "work"
+heat_the_food <- function(food){
+  
+  paste("Hot", food)
+
+}
+
+# here's the loop
+result <- purrr::map(food, heat_the_food)
+
+result
+
+```
+::: {.notes}
+Ignore for a moment the shape of the result.  In the loop example we got a vector back.  In the map example we have a list.  We'll come back to that shortly.
+
+But even with that difference you're sceptical.  Tom, you're short-changing us.  We're happy with loops.  14 lines of code.  You're talking about map() being simpler, and you still took 14 lines.  
+:::
+
+## Comparison {auto-animate=true}
+
+loop 
+```{.r}
+
+# we need a vector to iterate over
+food <- c("croissant", "baked potato")
+
+# we need to create a place to put the results (the right size)
+result <- vector("character", length(food))
+
+# here's the loop
+for(i in seq_along(food)){
+  
+  result[[i]] <- paste("Hot", food[[i]])
+  
+}
+
+result
+
+```
+
+## Comparison {auto-animate=true}
+map
+```{.r}
+
+# we need a vector to iterate over
+food <- c("croissant", "baked potato")
+
+# we create a function to do the "work"
+heat_the_food <- function(food){
+  
+  paste("Hot", food)
+
+}
+
+# here's the loop
+result <- purrr::map(food, heat_the_food)
+
+result
+
+```
+
+## Comparison {auto-animate=true}
+
+loop 
+```{.r code-line-numbers="|6|9|11"}
+
+# we need a vector to iterate over
+food <- c("croissant", "baked potato")
+
+# we need to create a place to put the results (the right size)
+result <- vector("character", length(food))
+
+# here's the loop
+for(i in seq_along(food)){
+  
+  result[[i]] <- paste("Hot", food[[i]])
+  
+}
+
+result
+
+```
+
+There is more "boilerplate" code in a loop, and code explanations end up in comments (or don't exist)
+
+## Comparison {auto-animate=true}
+map
+```{.r code-line-numbers="|6|8|13"}
+
+# we need a vector to iterate over
+food <- c("croissant", "baked potato")
+
+# we create a function to do the "work"
+heat_the_food <- function(food){
+  
+  paste("Hot", food)
+
+}
+
+# here's the loop
+result <- purrr::map(food, heat_the_food)
+
+result
+
+```
+
+The code is easier to read, and we can use function names not comments to decribe what it's doing
+
+## In detail
+
+`purrr::map(food, heat_the_food)`
+
+`purrr::map(.x, .f)`
+
+.x A list or atomic vector
+
+.f A function
+
+
+`purrr::map(your_raw_material, function_containing_your_instructions)`
+
+
+
+
+## Further reading / training
+
+Tom Jemmett's excellent video on purrr:  
+<https://youtu.be/GxvccD8K49M>
+
+The iteration chapter of R for Data Science:  
+<https://r4ds.had.co.nz/iteration.html#iteration>
+
+The purrr docs:  
+<https://purrr.tidyverse.org>
+
+## Open source
+
+This presentation:  
+<https://github.com/ThomUK/2023-NHSR-Conf-Presentation>

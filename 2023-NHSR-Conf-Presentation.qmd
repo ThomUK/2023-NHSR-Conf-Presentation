@@ -5,6 +5,9 @@ format:
   revealjs:
     slide-number: true
     incremental: true
+  html: 
+    output-file: "index"
+    output-ext:  "html"
 ---
 
 <style>

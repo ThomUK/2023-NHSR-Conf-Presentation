@@ -16,13 +16,13 @@ format:
 
 ## purrr
 
-![](purrr_logo.png){fig-align="center"}
+![](img/purrr_logo.png){fig-align="center"}
 
 Ahhh, cute cat...
 
 ## Scary functional programming
 
-![](purrr_logo.png){fig-align="center"}
+![](img/purrr_logo.png){fig-align="center"}
 
 Run away now!
 

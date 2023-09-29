@@ -269,5 +269,7 @@ The purrr docs:
 
 ## Open source
 
-This presentation:  
-<https://github.com/ThomUK/2023-NHSR-Conf-Presentation>
+## Thank you
+
+![](img/grass-question-mark.png){fig-align="center"}
+

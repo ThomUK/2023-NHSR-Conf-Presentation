@@ -212,15 +212,31 @@ The code is easier to read, and we can use function names not comments to decrib
 .f A function
 
 
-`purrr::map(your_raw_material, function_containing_your_instructions)`
+## Further online training
 
+::::: {.columns}
 
+:::: {.column width="50%"}
+Tom Jemmett's video
+<iframe width="400" height="220" src="https://www.youtube.com/embed/GxvccD8K49M" allowfullscreen></iframe>  
 
+::: {.tiny-text}
+<https://www.youtube.com/GxvccD8K49M>
+:::
 
-## Further reading / training
+::::
 
-Tom Jemmett's excellent video on purrr:  
-<https://youtu.be/GxvccD8K49M>
+:::: {.column width="50%"}
+Hadley Wickham's video
+<iframe width="400" height="220" src="https://www.youtube.com/embed/EGAs7zuRutY" allowfullscreen></iframe>  
+
+::: {.tiny-text}
+<https://www.youtube.com/EGAs7zuRutY>
+:::
+
+::::
+
+:::::
 
 The iteration chapter of R for Data Science:  
 <https://r4ds.had.co.nz/iteration.html#iteration>

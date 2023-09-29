@@ -1,6 +1,6 @@
 ---
-title: "2023-NHSR-Conf-Presentation"
-author: "Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University Hospitals NHS Trust"
+title: "Using purrr instead of loops"
+author: "Tom Smith<br>Insight Manager (Family Health Division)<br>Nottingham University Hospitals NHS Trust"
 format: 
   revealjs:
     slide-number: true
@@ -15,11 +15,11 @@ format:
 }
 </style>
 
-## purrr
+## purrr for functional programming
 
 ![](img/purrr_logo.png){fig-align="center"}
 
-Ahhh, cute cat...
+Ahhh, a friendly cat...
 
 ## Scary functional programming
 
@@ -29,7 +29,7 @@ Run away now!
 
 ## Aims
 
-* Not scary!
+* Don't be scary!
 
 . . .  
 
@@ -58,10 +58,14 @@ Purrr is part of the tidyverse, and both of these comments are true.
 
 The first hints at the fact that once you grasp the map() function, you'll already be able to use it's close relations in helpful ways.  
 
-The second says the best place to learn is Hadley's book R for Data Science.  In the meantime I hope this presentation helps!
+The second says the best place to learn is Hadley's book R for Data Science.  In the meantime I hope this presentation helps, and at the end there are links to these and other resources.
 :::
 
-## Looping
+## Loops vs. Map
+
+Why should I learn how to use map()?
+
+## Loop example
 
 ```{r}
 #| echo: true
@@ -84,7 +88,7 @@ result
 
 ```
 
-## Mapping
+## Map example
 
 ```{r}
 #| echo: true
@@ -110,6 +114,8 @@ result
 Ignore for a moment the shape of the result.  In the loop example we got a vector back.  In the map example we have a list.  We'll come back to that shortly.
 
 But even with that difference you're sceptical.  Tom, you're short-changing us.  We're happy with loops.  14 lines of code.  You're talking about map() being simpler, and you still took 14 lines.  
+
+Lets go back and look in more detail...  
 :::
 
 ## Comparison {auto-animate=true}
@@ -177,7 +183,7 @@ result
 
 ```
 
-There is more "boilerplate" code in a loop, and code explanations end up in comments (or don't exist)
+There is more "boilerplate" code in a loop, and code explanations end up in comments (which might not exist)
 
 ## Comparison {auto-animate=true}
 map
@@ -200,7 +206,7 @@ result
 
 ```
 
-The code is easier to read, and we can use function names not comments to decribe what it's doing
+The code is easier to read, and we can use function names not comments to describe what it's doing
 
 ## In detail
 

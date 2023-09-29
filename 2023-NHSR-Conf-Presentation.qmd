@@ -213,6 +213,22 @@ The code is easier to read, and we can use function names not comments to decrib
 .f A function
 
 
+## Some things we haven't covered
+
+* The shape of the output  
+  As standard, the map functions return a list containing your result
+  What if we don't want that.  What if we just want a vector back, or a dataframe?
+  use the suffix functions instead...
+  map_vec
+  
+* map vs. walk
+  If the important part of your function is it's side-effects, you can use walk instead of map.  This doesn't return a list, but a vector of TRUE / FALSE.
+  
+* mapping over more than one variable
+  Sometimes you may need to vary more than one input to the function at a time
+  with 2 items to very, use map2
+  With a general number to vary, use pmap
+
 ## Further online training
 
 ::::: {.columns}

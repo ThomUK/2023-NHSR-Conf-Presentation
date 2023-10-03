@@ -9,8 +9,8 @@
 <link href="2023-NHSR-Conf-Presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.335">
 
-  <meta name="author" content="Tom Smith Insight Manager Family Health Division Nottingham University Hospitals NHS Trust">
-  <title>2023-NHSR-Conf-Presentation</title>
+  <meta name="author" content="Tom Smith Insight Manager (Family Health Division) Nottingham University Hospitals NHS Trust">
+  <title>Using purrr instead of loops</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -388,12 +388,12 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">2023-NHSR-Conf-Presentation</h1>
+  <h1 class="title">Using purrr instead of loops</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University Hospitals NHS Trust 
+Tom Smith<br>Insight Manager (Family Health Division)<br>Nottingham University Hospitals NHS Trust 
 </div>
 </div>
 </div>
@@ -407,10 +407,10 @@ Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University 
 }
 </style>
 </section>
-<section id="purrr" class="slide level2">
-<h2>purrr</h2>
+<section id="purrr-for-functional-programming" class="slide level2">
+<h2>purrr for functional programming</h2>
 
-<img data-src="img/purrr_logo.png" class="r-stretch quarto-figure-center"><p>Ahhh, cute cat…</p>
+<img data-src="img/purrr_logo.png" class="r-stretch quarto-figure-center"><p>Ahhh, a friendly cat…</p>
 </section>
 <section id="scary-functional-programming" class="slide level2">
 <h2>Scary functional programming</h2>
@@ -420,14 +420,17 @@ Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University 
 <section id="aims" class="slide level2">
 <h2>Aims</h2>
 <ul>
-<li class="fragment">Not scary!</li>
+<li class="fragment">Don’t be scary!</li>
 </ul>
 <div class="fragment">
 <div>
 <ul>
-<li>Practical intro to purrr</li>
-<li>Focus on a “mental model” which helped me</li>
-<li>Simple examples</li>
+<li><p>Practical intro to purrr</p></li>
+<li><p>A “mental model” which helped me</p></li>
+<li><p>Helpful examples</p>
+<ul>
+<li>Easy for a busy analyst to adapt</li>
+</ul></li>
 </ul>
 </div>
 </div>
@@ -448,7 +451,7 @@ Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University 
 <aside class="notes">
 <p>Purrr is part of the tidyverse, and both of these comments are true.</p>
 <p>The first hints at the fact that once you grasp the map() function, you’ll already be able to use it’s close relations in helpful ways.</p>
-<p>The second says the best place to learn is Hadley’s book R for Data Science. In the meantime I hope this presentation helps!</p>
+<p>The second says the best place to learn is Hadley’s book R for Data Science. In the meantime I hope this presentation helps, and at the end there are links to these and other resources.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -461,8 +464,12 @@ Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University 
           display:block!important;
       }</style></aside>
 </section>
-<section id="looping" class="slide level2">
-<h2>Looping</h2>
+<section id="loops-vs.-map" class="slide level2">
+<h2>Loops vs.&nbsp;Map</h2>
+<p>Why should I learn how to use map()?</p>
+</section>
+<section id="loop-example" class="slide level2">
+<h2>Loop example</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># we need a vector to iterate over</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>food <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"croissant"</span>, <span class="st">"baked potato"</span>)</span>
@@ -485,8 +492,8 @@ Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University 
 </div>
 </div>
 </section>
-<section id="mapping" class="slide level2">
-<h2>Mapping</h2>
+<section id="map-example" class="slide level2">
+<h2>Map example</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># we still need a vector to iterate over</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>food <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"croissant"</span>, <span class="st">"baked potato"</span>)</span>
@@ -515,6 +522,7 @@ Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University 
 <aside class="notes">
 <p>Ignore for a moment the shape of the result. In the loop example we got a vector back. In the map example we have a list. We’ll come back to that shortly.</p>
 <p>But even with that difference you’re sceptical. Tom, you’re short-changing us. We’re happy with loops. 14 lines of code. You’re talking about map() being simpler, and you still took 14 lines.</p>
+<p>Lets go back and look in more detail…</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -583,7 +591,7 @@ Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University 
 <span id="cb7-13" class="hljs-ln-code"><a href="#cb7-13"></a>}</span>
 <span id="cb7-14" class="hljs-ln-code"><a href="#cb7-14"></a></span>
 <span id="cb7-15" class="hljs-ln-code"><a href="#cb7-15"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>There is more “boilerplate” code in a loop, and code explanations end up in comments (or don’t exist)</p>
+<p>There is more “boilerplate” code in a loop, and code explanations end up in comments (which might not exist)</p>
 </section>
 <section id="comparison-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Comparison</h2>
@@ -603,30 +611,66 @@ Tom Smith<br>Insight Manager<br>Family Health Division<br>Nottingham University 
 <span id="cb8-13" class="hljs-ln-code"><a href="#cb8-13"></a>result <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(food, heat_the_food)</span>
 <span id="cb8-14" class="hljs-ln-code"><a href="#cb8-14"></a></span>
 <span id="cb8-15" class="hljs-ln-code"><a href="#cb8-15"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The code is easier to read, and we can use function names not comments to decribe what it’s doing</p>
+<p>The code is easier to read, and we can use function names not comments to describe what it’s doing</p>
 </section>
 <section id="in-detail" class="slide level2">
 <h2>In detail</h2>
-<p><code>purrr::map(food, heat_the_food)</code></p>
-<p><code>purrr::map(.x, .f)</code></p>
-<p>.x A list or atomic vector</p>
-<p>.f A function</p>
-<p><code>purrr::map(your_raw_material, function_containing_your_instructions)</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(food, heat_the_food)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>purrr<span class="sc">::</span><span class="fu">map</span>(subjects, action)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>purrr<span class="sc">::</span><span class="fu">map</span>(noun, verb)</span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a>purrr<span class="sc">::</span><span class="fu">map</span>(.x, .f)</span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a>.x A list or atomic vector</span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a>.f A <span class="cf">function</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a></span>
+<span id="cb9-12"><a href="#cb9-12"></a>purrr<span class="sc">::</span><span class="fu">map</span>(raw_material, instructions)</span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a>purrr<span class="sc">::</span><span class="fu">map</span>(ingredients, recipe)</span>
+<span id="cb9-15"><a href="#cb9-15"></a></span>
+<span id="cb9-16"><a href="#cb9-16"></a>purrr<span class="sc">::</span><span class="fu">map</span>(furniture_components, ikea_handbook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="further-reading-training" class="slide level2">
-<h2>Further reading / training</h2>
-<p>Tom Jemmett’s excellent video on purrr:<br>
-<a href="https://youtu.be/GxvccD8K49M" class="uri">https://youtu.be/GxvccD8K49M</a></p>
+<section id="some-things-we-havent-covered" class="slide level2">
+<h2>Some things we haven’t covered</h2>
+<ul>
+<li class="fragment"><p>The shape of the output<br>
+As standard, the map functions return a list containing your result What if we don’t want that. What if we just want a vector back, or a dataframe? use the suffix functions instead… map_vec</p></li>
+<li class="fragment"><p>map vs.&nbsp;walk If the important part of your function is it’s side-effects, you can use walk instead of map. This doesn’t return a list, but a vector of TRUE / FALSE.</p></li>
+<li class="fragment"><p>mapping over more than one variable Sometimes you may need to vary more than one input to the function at a time with 2 items to very, use map2 With a general number to vary, use pmap</p></li>
+</ul>
+</section>
+<section id="further-online-training" class="slide level2">
+<h2>Further online training</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Tom Jemmett’s video <iframe width="400" height="220" src="https://www.youtube.com/embed/GxvccD8K49M" allowfullscreen=""></iframe></p>
+<div class="tiny-text">
+<p><a href="https://www.youtube.com/GxvccD8K49M" class="uri">https://www.youtube.com/GxvccD8K49M</a></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Hadley Wickham’s video <iframe width="400" height="220" src="https://www.youtube.com/embed/EGAs7zuRutY" allowfullscreen=""></iframe></p>
+<div class="tiny-text">
+<p><a href="https://www.youtube.com/EGAs7zuRutY" class="uri">https://www.youtube.com/EGAs7zuRutY</a></p>
+</div>
+</div>
+</div>
 <p>The iteration chapter of R for Data Science:<br>
 <a href="https://r4ds.had.co.nz/iteration.html#iteration" class="uri">https://r4ds.had.co.nz/iteration.html#iteration</a></p>
 <p>The purrr docs:<br>
 <a href="https://purrr.tidyverse.org" class="uri">https://purrr.tidyverse.org</a></p>
 </section>
 <section id="open-source" class="slide level2">
-<h2>Open source</h2>
-<p>This presentation:<br>
-<a href="https://github.com/ThomUK/2023-NHSR-Conf-Presentation" class="uri">https://github.com/ThomUK/2023-NHSR-Conf-Presentation</a></p>
-<div class="footer footer-default">
+<h2>Open-source</h2>
+<p><img data-src="img/github-mark.svg" width="30"> Online presentation: <a href="https://thomuk.github.io/2023-NHSR-Conf-Presentation" class="uri">https://thomuk.github.io/2023-NHSR-Conf-Presentation</a></p>
+<p><img data-src="img/github-mark.svg" width="30"> Presentation code: <a href="https://github.com/ThomUK/2023-NHSR-Conf-Presentation" class="uri">https://github.com/ThomUK/2023-NHSR-Conf-Presentation</a></p>
+<p><img data-src="img/github-mark.svg" width="30"> Other repos: <a href="https://github.com/ThomUK" class="uri">https://github.com/ThomUK</a></p>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you</h2>
+
+<img data-src="img/grass-question-mark.png" class="r-stretch quarto-figure-center"><div class="footer footer-default">
 
 </div>
 </section>

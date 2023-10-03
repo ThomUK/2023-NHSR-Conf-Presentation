@@ -35,8 +35,10 @@ Run away now!
 
 :::{.nonincremental}
 * Practical intro to purrr
-* Focus on a "mental model" which helped me
-* Simple examples
+* A "mental model" which helped me
+
+* Helpful examples
+  + Easy for a busy analyst to adapt
 :::
 
 . . .  
@@ -210,14 +212,24 @@ The code is easier to read, and we can use function names not comments to descri
 
 ## In detail
 
-`purrr::map(food, heat_the_food)`
+```{.r}
+purrr::map(food, heat_the_food)
+purrr::map(subjects, action)
+purrr::map(noun, verb)
 
-`purrr::map(.x, .f)`
+purrr::map(.x, .f)
 
 .x A list or atomic vector
 
 .f A function
 
+
+purrr::map(raw_material, instructions)
+
+purrr::map(ingredients, recipe)
+
+purrr::map(furniture_components, ikea_handbook)
+```
 
 ## Some things we haven't covered
 
@@ -267,7 +279,13 @@ The iteration chapter of R for Data Science:
 The purrr docs:  
 <https://purrr.tidyverse.org>
 
-## Open source
+## Open-source
+
+![](img/github-mark.svg){width=30} Online presentation: <https://thomuk.github.io/2023-NHSR-Conf-Presentation>
+
+![](img/github-mark.svg){width=30} Presentation code: <https://github.com/ThomUK/2023-NHSR-Conf-Presentation>
+
+![](img/github-mark.svg){width=30} Other repos: <https://github.com/ThomUK>
 
 ## Thank you
 

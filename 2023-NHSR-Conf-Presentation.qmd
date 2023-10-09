@@ -447,21 +447,24 @@ purrr::map(
 
 ## Some things we haven't covered
 
-* The shape of the output  
-  As standard, the map functions return a list containing your result
-  What if we don't want that.  What if we just want a vector back, or a dataframe?
-  use the suffix functions instead...
-  map_vec
-  
-* map vs. walk
-  If the important part of your function is it's side-effects, you can use walk instead of map.  This doesn't return a list, but a vector of TRUE / FALSE.
-  
-* mapping over more than one variable
-  Sometimes you may need to vary more than one input to the function at a time
-  with 2 items to very, use map2
-  With a general number to vary, use pmap
+:::{.nonincremental}
 
-## Further online training
+* Passing other arguments in
+  + eg. the data in the charts example
+
+* The shape of the output  
+  + Getting a vector back instead of a list
+  
+* map() vs. walk()
+  + Returned values vs. side-effects
+
+* Mapping over more than one variable
+  + map2() for 2 variables
+  + pmap() and a dataframe of variables for more
+  
+:::
+
+## Further online material
 
 ::::: {.columns}
 

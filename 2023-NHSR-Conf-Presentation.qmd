@@ -485,11 +485,9 @@ Hadley Wickham's video
 The iteration chapter of R for Data Science:  
 <https://r4ds.had.co.nz/iteration.html#iteration>
 
-The purrr docs:  
-<https://purrr.tidyverse.org>
+Docs: <https://purrr.tidyverse.org>
 
-Cheatsheet:
-<https://rstudio.github.io/cheatsheets/purrr.pdf>
+Cheatsheet: <https://rstudio.github.io/cheatsheets/purrr.pdf>
 
 ## Open-source
 

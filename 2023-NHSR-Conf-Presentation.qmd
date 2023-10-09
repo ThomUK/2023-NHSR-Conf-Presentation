@@ -1,5 +1,5 @@
 ---
-title: "Old dog and new tricks - Learning to {purrr}"
+title: "Old dog and new tricks<br>Learning to {purrr}"
 author: "Tom Smith<br>Insight Manager<br>Nottingham University Hospitals NHS Trust"
 format: 
   revealjs:
@@ -30,9 +30,7 @@ Run away now!
 :::{.nonincremental}
 * Practical intro to purrr
 * A "mental model" which helped me
-
-* Helpful examples
-  + Easy to adapt
+* A helpful chart-making example
 :::
 
 . . .  
@@ -365,7 +363,8 @@ purrr::map(
 
 ## What about SPC!?
 
-```{.r code-line-numbers="1,10,18,28"}
+```{.r code-line-numbers="|2,11,13,14,16,19,23,29"}
+# we make minor alterations to the plotting function
 make_spc <- function(name, data){
 
   # filter the dataset down to metric of interest

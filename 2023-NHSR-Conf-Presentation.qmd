@@ -297,7 +297,7 @@ result
 
 ## Real-world example
 
-
+![](img/charts.png)
 
 ## Some data
 

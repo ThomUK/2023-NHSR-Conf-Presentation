@@ -32,14 +32,14 @@ Run away now!
 * A "mental model" which helped me
 
 * Helpful examples
-  + Easy for a busy analyst to adapt
+  + Easy to adapt
 :::
 
 . . .  
 
-Functional programming is something we can save for another day (and another speaker!)
+Functional programming is for another day (and another speaker!)
 
-## The package website
+## I wouldn't start from here
 
 From the tidyverse documentation: 
 
@@ -204,26 +204,97 @@ result
 
 The code is easier to read, and we can use function names not comments to describe what it's doing
 
-## In detail
+## Arguments
 
 ```{.r}
-purrr::map(food, heat_the_food)
-purrr::map(subjects, action)
-purrr::map(noun, verb)
-
 purrr::map(.x, .f)
 
-.x A list or atomic vector
+# .x A list or atomic vector
+# .f A function
 
-.f A function
 
+```
+
+### Mental model
+```{.r}
+purrr::map(food, heat_the_food)
+
+purrr::map(subjects, action)
+
+purrr::map(noun, verb)
 
 purrr::map(raw_material, instructions)
 
 purrr::map(ingredients, recipe)
 
-purrr::map(furniture_components, ikea_handbook)
 ```
+
+## Cakes!
+
+purrr::map(.x, .f)  
+
+:::: columns
+::: {.column width="30%" .fragment .centre}
+.x  
+![](img/cake-x.jpg){width=300}
+:::
+::: {.column width="30%" .fragment .centre}
+.f  
+![](img/cake-f.jpg){width=300}
+:::
+::: {.column width="10%" .fragment .centre}
+=
+:::
+::: {.column width="30%" .fragment .centre}
+result  
+![](img/cake-res.jpg){width=300}
+:::
+::::
+
+## Cars!
+
+purrr::map(.x, .f)  
+
+:::: columns
+::: {.column width="30%" .fragment .centre}
+.x  
+![](img/car-x.jpg){width=300}
+:::
+::: {.column width="30%" .fragment .centre}
+.f  
+![](img/car-f.png){width=300}
+:::
+::: {.column width="10%" .fragment .centre}
+=
+:::
+::: {.column width="30%" .fragment .centre}
+result  
+![](img/car-res.jpg){width=300}
+:::
+::::
+
+## Ikea!
+
+purrr::map(.x, .f)  
+
+:::: columns
+::: {.column width="30%" .fragment .centre}
+.x  
+![](img/ikea-x.avif){width=300}
+:::
+::: {.column width="30%" .fragment .centre}
+.f  
+![](img/ikea-f.jpg){width=300}
+:::
+::: {.column width="10%" .fragment .centre}
+=
+:::
+::: {.column width="30%" .fragment .centre}
+result  
+![](img/ikea-res.avif){width=300}
+:::
+::::
+
 
 ## Some things we haven't covered
 
@@ -272,6 +343,9 @@ The iteration chapter of R for Data Science:
 
 The purrr docs:  
 <https://purrr.tidyverse.org>
+
+Cheatsheet:
+<https://rstudio.github.io/cheatsheets/purrr.pdf>
 
 ## Open-source
 

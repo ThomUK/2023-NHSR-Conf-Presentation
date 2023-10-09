@@ -295,6 +295,150 @@ result
 :::
 ::::
 
+## Real-world example
+
+
+
+## Some data
+
+```{r echo=TRUE}
+set.seed(100)
+# make some timeseries data for 5 metrics
+data_long <- data.frame(
+  metric = paste0("Metric ", rep(c(1,2,3,4,5), each = 45)),
+  date = rep(seq.Date(from = as.Date("2020-01-01"), to = as.Date("2023-09-01"), by = "month"), times = 5),
+  values = rnorm(225)
+)
+
+head(data_long)
+```
+
+## A function to make a plot
+
+```{r echo=TRUE}
+make_chart <- function(name, data){
+
+  # filter the dataset down to metric of interest
+  filtered_data <- data |>
+    dplyr::filter(
+      metric == name
+    )
+
+  # make a plot
+  p <- ggplot(
+    filtered_data,
+    aes(date, values)
+  ) +
+    geom_line() +
+    geom_point() +
+    labs(
+      title = name,
+      subtitle = "An important subtitle"
+    )
+
+  # save the plot
+  ggsave(paste0("img/", name, ".png"), p, units = "px", width = 600, height = 300, scale = 3)
+
+}
+```
+
+## Map
+
+```{r echo=TRUE}
+library(ggplot2)
+
+purrr::map(
+  c("Metric 1", "Metric 2", "Metric 3", "Metric 4", "Metric 5"), 
+  make_chart, 
+  data_long
+)
+
+```
+
+## Charts
+
+![](img/Metric 1.png){.absolute top=80 left=0 width="600" height="300" .fragment}
+![](img/Metric 2.png){.absolute top=160 left=100 width="600" height="300" .fragment}
+![](img/Metric 3.png){.absolute top=240 left=200 width="600" height="300" .fragment}
+![](img/Metric 4.png){.absolute top=320 left=300 width="600" height="300" .fragment}
+![](img/Metric 5.png){.absolute top=400 left=400 width="600" height="300" .fragment}
+
+## What about SPC!?
+
+```{.r code-line-numbers="1,10,18,28"}
+make_spc <- function(name, data){
+
+  # filter the dataset down to metric of interest
+  filtered_data <- data |>
+    dplyr::filter(
+      metric == name
+    )
+
+  # make a plot using {NHSRplotthedots}
+  p <- NHSRplotthedots::ptd_spc(
+    filtered_data,
+    values,
+    date
+  ) |>
+    NHSRplotthedots::ptd_create_ggplot() +
+    labs(
+      title = name,
+      subtitle = "A better, and more insightful subtitle"
+    )
+
+  # save the plot
+  ggsave(paste0("img/", name, "_spc.png"), p, units = "px", width = 600, height = 300, scale = 4)
+
+}
+
+purrr::map(
+  c("Metric 1", "Metric 2", "Metric 3", "Metric 4", "Metric 5"), 
+  make_spc, 
+  data_long
+)
+```
+
+```{r include=FALSE}
+make_spc <- function(name, data){
+
+  # filter the dataset down to metric of interest
+  filtered_data <- data |>
+    dplyr::filter(
+      metric == name
+    )
+
+  # make a plot using {NHSRplotthedots}
+  p <- NHSRplotthedots::ptd_spc(
+    filtered_data,
+    values,
+    date
+  ) |>
+    NHSRplotthedots::ptd_create_ggplot() +
+    labs(
+      title = name,
+      subtitle = "A better, and more insightful subtitle"
+    )
+
+  # save the plot
+  ggsave(paste0("img/", name, "_spc.png"), p, units = "px", width = 600, height = 300, scale = 4)
+
+}
+
+purrr::map(
+  c("Metric 1", "Metric 2", "Metric 3", "Metric 4", "Metric 5"), 
+  make_spc, 
+  data_long
+)
+```
+
+## SPC charts
+
+![](img/Metric 1_spc.png){.absolute top=80 left=0 width="600" height="300" .fragment}
+![](img/Metric 2_spc.png){.absolute top=160 left=100 width="600" height="300" .fragment}
+![](img/Metric 3_spc.png){.absolute top=240 left=200 width="600" height="300" .fragment}
+![](img/Metric 4_spc.png){.absolute top=320 left=300 width="600" height="300" .fragment}
+![](img/Metric 5_spc.png){.absolute top=400 left=400 width="600" height="300" .fragment}
+
 
 ## Some things we haven't covered
 

@@ -443,6 +443,7 @@ purrr::map(
 
 ![](img/sausage-machine.jpg){.absolute top=100 left=100 width="800"}
 ![](img/purrr.jpg){.absolute top=430 left=500 width="80"}
+![](img/data.jpg){.absolute top=50 left=450 width="100" height="100" .fragment}
 
 
 ## Some things we haven't covered

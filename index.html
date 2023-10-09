@@ -9,8 +9,8 @@
 <link href="2023-NHSR-Conf-Presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.335">
 
-  <meta name="author" content="Tom Smith Insight Manager (Family Health Division) Nottingham University Hospitals NHS Trust">
-  <title>Using purrr instead of loops</title>
+  <meta name="author" content="Tom Smith Insight Manager Nottingham University Hospitals NHS Trust">
+  <title>Old dog and new tricks Learning to {purrr}</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -388,34 +388,26 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Using purrr instead of loops</h1>
+  <h1 class="title">Old dog and new tricks<br>Learning to {purrr}</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Tom Smith<br>Insight Manager (Family Health Division)<br>Nottingham University Hospitals NHS Trust 
+Tom Smith<br>Insight Manager<br>Nottingham University Hospitals NHS Trust 
 </div>
 </div>
 </div>
 
-</section>
-<section class="slide level2">
-
-<style>
-.highlighted {
-  background-color: yellow;
-}
-</style>
 </section>
 <section id="purrr-for-functional-programming" class="slide level2">
 <h2>purrr for functional programming</h2>
 
-<img data-src="img/purrr_logo.png" class="r-stretch quarto-figure-center"><p>Ahhh, a friendly cat…</p>
+<img data-src="img/purrr.jpg" class="r-stretch quarto-figure-center"><p>Ahhh, a friendly cat…</p>
 </section>
 <section id="scary-functional-programming" class="slide level2">
 <h2>Scary functional programming</h2>
 
-<img data-src="img/purrr_logo.png" class="r-stretch quarto-figure-center"><p>Run away now!</p>
+<img data-src="img/ugly-cat.jpg" class="r-stretch quarto-figure-center"><p>Run away now!</p>
 </section>
 <section id="aims" class="slide level2">
 <h2>Aims</h2>
@@ -425,21 +417,18 @@ Tom Smith<br>Insight Manager (Family Health Division)<br>Nottingham University H
 <div class="fragment">
 <div>
 <ul>
-<li><p>Practical intro to purrr</p></li>
-<li><p>A “mental model” which helped me</p></li>
-<li><p>Helpful examples</p>
-<ul>
-<li>Easy for a busy analyst to adapt</li>
-</ul></li>
+<li>Practical intro to purrr</li>
+<li>A “mental model” which helped me</li>
+<li>A helpful chart-making example</li>
 </ul>
 </div>
 </div>
 <div class="fragment">
-<p>Functional programming is something we can save for another day (and another speaker!)</p>
+<p>Functional programming is for another day (and another speaker!)</p>
 </div>
 </section>
-<section id="the-package-website" class="slide level2">
-<h2>The package website</h2>
+<section id="i-wouldnt-start-from-here" class="slide level2">
+<h2>I wouldn’t start from here</h2>
 <p>From the tidyverse documentation:</p>
 <blockquote>
 <p>“the best place to start is the family of map() functions which allow you to replace many for loops with code that is both more succinct and easier to read.”</p>
@@ -613,36 +602,234 @@ Tom Smith<br>Insight Manager (Family Health Division)<br>Nottingham University H
 <span id="cb8-15" class="hljs-ln-code"><a href="#cb8-15"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The code is easier to read, and we can use function names not comments to describe what it’s doing</p>
 </section>
-<section id="in-detail" class="slide level2">
-<h2>In detail</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(food, heat_the_food)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>purrr<span class="sc">::</span><span class="fu">map</span>(subjects, action)</span>
-<span id="cb9-3"><a href="#cb9-3"></a>purrr<span class="sc">::</span><span class="fu">map</span>(noun, verb)</span>
-<span id="cb9-4"><a href="#cb9-4"></a></span>
-<span id="cb9-5"><a href="#cb9-5"></a>purrr<span class="sc">::</span><span class="fu">map</span>(.x, .f)</span>
-<span id="cb9-6"><a href="#cb9-6"></a></span>
-<span id="cb9-7"><a href="#cb9-7"></a>.x A list or atomic vector</span>
-<span id="cb9-8"><a href="#cb9-8"></a></span>
-<span id="cb9-9"><a href="#cb9-9"></a>.f A <span class="cf">function</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a></span>
-<span id="cb9-11"><a href="#cb9-11"></a></span>
-<span id="cb9-12"><a href="#cb9-12"></a>purrr<span class="sc">::</span><span class="fu">map</span>(raw_material, instructions)</span>
-<span id="cb9-13"><a href="#cb9-13"></a></span>
-<span id="cb9-14"><a href="#cb9-14"></a>purrr<span class="sc">::</span><span class="fu">map</span>(ingredients, recipe)</span>
-<span id="cb9-15"><a href="#cb9-15"></a></span>
-<span id="cb9-16"><a href="#cb9-16"></a>purrr<span class="sc">::</span><span class="fu">map</span>(furniture_components, ikea_handbook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="arguments" class="slide level2">
+<h2>Arguments</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(.x, .f)</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># .x A list or atomic vector</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># .f A function</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="mental-model">Mental model</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(food, heat_the_food)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>purrr<span class="sc">::</span><span class="fu">map</span>(subjects, action)</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a>purrr<span class="sc">::</span><span class="fu">map</span>(noun, verb)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>purrr<span class="sc">::</span><span class="fu">map</span>(raw_material, instructions)</span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a>purrr<span class="sc">::</span><span class="fu">map</span>(ingredients, recipe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="cakes" class="slide level2">
+<h2>Cakes!</h2>
+<p>purrr::map(.x, .f)</p>
+<div class="columns">
+<div class="column fragment centre" style="width:30%;">
+<p>.x<br>
+<img data-src="img/cake-x.jpg" width="300"></p>
+</div><div class="column fragment centre" style="width:30%;">
+<p>.f<br>
+<img data-src="img/cake-f.jpg" width="300"></p>
+</div><div class="column fragment centre" style="width:10%;">
+<p>=</p>
+</div><div class="column fragment centre" style="width:30%;">
+<p>result<br>
+<img data-src="img/cake-res.jpg" width="300"></p>
+</div>
+</div>
+</section>
+<section id="cars" class="slide level2">
+<h2>Cars!</h2>
+<p>purrr::map(.x, .f)</p>
+<div class="columns">
+<div class="column fragment centre" style="width:30%;">
+<p>.x<br>
+<img data-src="img/car-x.jpg" width="300"></p>
+</div><div class="column fragment centre" style="width:30%;">
+<p>.f<br>
+<img data-src="img/car-f.png" width="300"></p>
+</div><div class="column fragment centre" style="width:10%;">
+<p>=</p>
+</div><div class="column fragment centre" style="width:30%;">
+<p>result<br>
+<img data-src="img/car-res.jpg" width="300"></p>
+</div>
+</div>
+</section>
+<section id="ikea" class="slide level2">
+<h2>Ikea!</h2>
+<p>purrr::map(.x, .f)</p>
+<div class="columns">
+<div class="column fragment centre" style="width:30%;">
+<p>.x<br>
+<img data-src="img/ikea-x.avif" width="300"></p>
+</div><div class="column fragment centre" style="width:30%;">
+<p>.f<br>
+<img data-src="img/ikea-f.jpg" width="300"></p>
+</div><div class="column fragment centre" style="width:10%;">
+<p>=</p>
+</div><div class="column fragment centre" style="width:30%;">
+<p>result<br>
+<img data-src="img/ikea-res.avif" width="300"></p>
+</div>
+</div>
+</section>
+<section id="real-world-example" class="slide level2">
+<h2>Real-world example</h2>
+
+<img data-src="img/charts.png" class="r-stretch"></section>
+<section id="some-data" class="slide level2">
+<h2>Some data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># make some timeseries data for 5 metrics</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>data_long <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">metric =</span> <span class="fu">paste0</span>(<span class="st">"Metric "</span>, <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>), <span class="at">each =</span> <span class="dv">45</span>)),</span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="at">date =</span> <span class="fu">rep</span>(<span class="fu">seq.Date</span>(<span class="at">from =</span> <span class="fu">as.Date</span>(<span class="st">"2020-01-01"</span>), <span class="at">to =</span> <span class="fu">as.Date</span>(<span class="st">"2023-09-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>), <span class="at">times =</span> <span class="dv">5</span>),</span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="at">values =</span> <span class="fu">rnorm</span>(<span class="dv">225</span>)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>)</span>
+<span id="cb11-8"><a href="#cb11-8"></a></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="fu">head</span>(data_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    metric       date      values
+1 Metric 1 2020-01-01 -0.50219235
+2 Metric 1 2020-02-01  0.13153117
+3 Metric 1 2020-03-01 -0.07891709
+4 Metric 1 2020-04-01  0.88678481
+5 Metric 1 2020-05-01  0.11697127
+6 Metric 1 2020-06-01  0.31863009</code></pre>
+</div>
+</div>
+</section>
+<section id="a-function-to-make-a-plot" class="slide level2">
+<h2>A function to make a plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>make_chart <span class="ot">&lt;-</span> <span class="cf">function</span>(name, data){</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="co"># filter the dataset down to metric of interest</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>  filtered_data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(</span>
+<span id="cb13-6"><a href="#cb13-6"></a>      metric <span class="sc">==</span> name</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    )</span>
+<span id="cb13-8"><a href="#cb13-8"></a></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="co"># make a plot</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb13-11"><a href="#cb13-11"></a>    filtered_data,</span>
+<span id="cb13-12"><a href="#cb13-12"></a>    <span class="fu">aes</span>(date, values)</span>
+<span id="cb13-13"><a href="#cb13-13"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a>    <span class="fu">labs</span>(</span>
+<span id="cb13-17"><a href="#cb13-17"></a>      <span class="at">title =</span> name,</span>
+<span id="cb13-18"><a href="#cb13-18"></a>      <span class="at">subtitle =</span> <span class="st">"An important subtitle"</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a>    )</span>
+<span id="cb13-20"><a href="#cb13-20"></a></span>
+<span id="cb13-21"><a href="#cb13-21"></a>  <span class="co"># save the plot</span></span>
+<span id="cb13-22"><a href="#cb13-22"></a>  <span class="fu">ggsave</span>(<span class="fu">paste0</span>(<span class="st">"img/"</span>, name, <span class="st">".png"</span>), p, <span class="at">units =</span> <span class="st">"px"</span>, <span class="at">width =</span> <span class="dv">600</span>, <span class="at">height =</span> <span class="dv">300</span>, <span class="at">scale =</span> <span class="dv">3</span>)</span>
+<span id="cb13-23"><a href="#cb13-23"></a></span>
+<span id="cb13-24"><a href="#cb13-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="map" class="slide level2">
+<h2>Map</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">c</span>(<span class="st">"Metric 1"</span>, <span class="st">"Metric 2"</span>, <span class="st">"Metric 3"</span>, <span class="st">"Metric 4"</span>, <span class="st">"Metric 5"</span>), </span>
+<span id="cb14-5"><a href="#cb14-5"></a>  make_chart, </span>
+<span id="cb14-6"><a href="#cb14-6"></a>  data_long</span>
+<span id="cb14-7"><a href="#cb14-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "img/Metric 1.png"
+
+[[2]]
+[1] "img/Metric 2.png"
+
+[[3]]
+[1] "img/Metric 3.png"
+
+[[4]]
+[1] "img/Metric 4.png"
+
+[[5]]
+[1] "img/Metric 5.png"</code></pre>
+</div>
+</div>
+</section>
+<section id="charts" class="slide level2">
+<h2>Charts</h2>
+<p><img data-src="img/Metric%201.png" class="absolute fragment" style="top: 80px; left: 0px; width: 600px; height: 300px; "> <img data-src="img/Metric%202.png" class="absolute fragment" style="top: 160px; left: 100px; width: 600px; height: 300px; "> <img data-src="img/Metric%203.png" class="absolute fragment" style="top: 240px; left: 200px; width: 600px; height: 300px; "> <img data-src="img/Metric%204.png" class="absolute fragment" style="top: 320px; left: 300px; width: 600px; height: 300px; "> <img data-src="img/Metric%205.png" class="absolute fragment" style="top: 400px; left: 400px; width: 600px; height: 300px; "></p>
+</section>
+<section id="what-about-spc" class="slide level2">
+<h2>What about SPC!?</h2>
+<div class="sourceCode" id="cb16" data-code-line-numbers="|2,11,13,14,16,19,23,29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># we make minor alterations to the plotting function</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>make_spc <span class="ot">&lt;-</span> <span class="cf">function</span>(name, data){</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="co"># filter the dataset down to metric of interest</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>  filtered_data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(</span>
+<span id="cb16-7"><a href="#cb16-7"></a>      metric <span class="sc">==</span> name</span>
+<span id="cb16-8"><a href="#cb16-8"></a>    )</span>
+<span id="cb16-9"><a href="#cb16-9"></a></span>
+<span id="cb16-10"><a href="#cb16-10"></a>  <span class="co"># make a plot using {NHSRplotthedots}</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a>  p <span class="ot">&lt;-</span> NHSRplotthedots<span class="sc">::</span><span class="fu">ptd_spc</span>(</span>
+<span id="cb16-12"><a href="#cb16-12"></a>    filtered_data,</span>
+<span id="cb16-13"><a href="#cb16-13"></a>    values,</span>
+<span id="cb16-14"><a href="#cb16-14"></a>    date</span>
+<span id="cb16-15"><a href="#cb16-15"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb16-16"><a href="#cb16-16"></a>    NHSRplotthedots<span class="sc">::</span><span class="fu">ptd_create_ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-17"><a href="#cb16-17"></a>    <span class="fu">labs</span>(</span>
+<span id="cb16-18"><a href="#cb16-18"></a>      <span class="at">title =</span> name,</span>
+<span id="cb16-19"><a href="#cb16-19"></a>      <span class="at">subtitle =</span> <span class="st">"A better, and more insightful subtitle"</span></span>
+<span id="cb16-20"><a href="#cb16-20"></a>    )</span>
+<span id="cb16-21"><a href="#cb16-21"></a></span>
+<span id="cb16-22"><a href="#cb16-22"></a>  <span class="co"># save the plot</span></span>
+<span id="cb16-23"><a href="#cb16-23"></a>  <span class="fu">ggsave</span>(<span class="fu">paste0</span>(<span class="st">"img/"</span>, name, <span class="st">"_spc.png"</span>), p, <span class="at">units =</span> <span class="st">"px"</span>, <span class="at">width =</span> <span class="dv">600</span>, <span class="at">height =</span> <span class="dv">300</span>, <span class="at">scale =</span> <span class="dv">4</span>)</span>
+<span id="cb16-24"><a href="#cb16-24"></a></span>
+<span id="cb16-25"><a href="#cb16-25"></a>}</span>
+<span id="cb16-26"><a href="#cb16-26"></a></span>
+<span id="cb16-27"><a href="#cb16-27"></a>purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb16-28"><a href="#cb16-28"></a>  <span class="fu">c</span>(<span class="st">"Metric 1"</span>, <span class="st">"Metric 2"</span>, <span class="st">"Metric 3"</span>, <span class="st">"Metric 4"</span>, <span class="st">"Metric 5"</span>), </span>
+<span id="cb16-29"><a href="#cb16-29"></a>  make_spc, </span>
+<span id="cb16-30"><a href="#cb16-30"></a>  data_long</span>
+<span id="cb16-31"><a href="#cb16-31"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="spc-charts" class="slide level2">
+<h2>SPC charts</h2>
+<p><img data-src="img/Metric%201_spc.png" class="absolute fragment" style="top: 80px; left: 0px; width: 600px; height: 300px; "> <img data-src="img/Metric%202_spc.png" class="absolute fragment" style="top: 160px; left: 100px; width: 600px; height: 300px; "> <img data-src="img/Metric%203_spc.png" class="absolute fragment" style="top: 240px; left: 200px; width: 600px; height: 300px; "> <img data-src="img/Metric%204_spc.png" class="absolute fragment" style="top: 320px; left: 300px; width: 600px; height: 300px; "> <img data-src="img/Metric%205_spc.png" class="absolute fragment" style="top: 400px; left: 400px; width: 600px; height: 300px; "></p>
+</section>
+<section id="in-summary" class="slide level2">
+<h2>In summary</h2>
+<p><img data-src="img/sausage-machine.jpg" class="absolute" style="top: 100px; left: 100px; width: 800px; "> <img data-src="img/purrr.jpg" class="absolute" style="top: 430px; left: 500px; width: 80px; "> <img data-src="img/data.jpg" class="absolute fragment" style="top: 50px; left: 450px; width: 100px; height: 100px; "></p>
 </section>
 <section id="some-things-we-havent-covered" class="slide level2">
 <h2>Some things we haven’t covered</h2>
+<div>
 <ul>
-<li class="fragment"><p>The shape of the output<br>
-As standard, the map functions return a list containing your result What if we don’t want that. What if we just want a vector back, or a dataframe? use the suffix functions instead… map_vec</p></li>
-<li class="fragment"><p>map vs.&nbsp;walk If the important part of your function is it’s side-effects, you can use walk instead of map. This doesn’t return a list, but a vector of TRUE / FALSE.</p></li>
-<li class="fragment"><p>mapping over more than one variable Sometimes you may need to vary more than one input to the function at a time with 2 items to very, use map2 With a general number to vary, use pmap</p></li>
+<li>Passing other arguments in
+<ul>
+<li>eg. the data in the charts example</li>
+</ul></li>
+<li>The shape of the output
+<ul>
+<li>Getting a vector back instead of a list</li>
+</ul></li>
+<li>map() vs.&nbsp;walk()
+<ul>
+<li>Returned values vs.&nbsp;side-effects</li>
+</ul></li>
+<li>Mapping over more than one variable
+<ul>
+<li>map2() for 2 variables</li>
+<li>pmap() and a dataframe of variables for more</li>
+</ul></li>
 </ul>
+</div>
 </section>
-<section id="further-online-training" class="slide level2">
-<h2>Further online training</h2>
+<section id="further-online-material" class="slide level2">
+<h2>Further online material</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Tom Jemmett’s video <iframe width="400" height="220" src="https://www.youtube.com/embed/GxvccD8K49M" allowfullscreen=""></iframe></p>
@@ -658,8 +845,8 @@ As standard, the map functions return a list containing your result What if we d
 </div>
 <p>The iteration chapter of R for Data Science:<br>
 <a href="https://r4ds.had.co.nz/iteration.html#iteration" class="uri">https://r4ds.had.co.nz/iteration.html#iteration</a></p>
-<p>The purrr docs:<br>
-<a href="https://purrr.tidyverse.org" class="uri">https://purrr.tidyverse.org</a></p>
+<p>Docs: <a href="https://purrr.tidyverse.org" class="uri">https://purrr.tidyverse.org</a></p>
+<p>Cheatsheet: <a href="https://rstudio.github.io/cheatsheets/purrr.pdf" class="uri">https://rstudio.github.io/cheatsheets/purrr.pdf</a></p>
 </section>
 <section id="open-source" class="slide level2">
 <h2>Open-source</h2>

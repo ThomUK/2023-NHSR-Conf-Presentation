@@ -1,6 +1,6 @@
 ---
-title: "Using purrr instead of loops"
-author: "Tom Smith<br>Insight Manager (Family Health Division)<br>Nottingham University Hospitals NHS Trust"
+title: "Old dog and new tricks - Learning to {purrr}"
+author: "Tom Smith<br>Insight Manager<br>Nottingham University Hospitals NHS Trust"
 format: 
   revealjs:
     slide-number: true

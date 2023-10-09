@@ -9,21 +9,15 @@ format:
     theme: [default, css/custom_styles.scss]
 ---
 
-<style>
-.highlighted {
-  background-color: yellow;
-}
-</style>
-
 ## purrr for functional programming
 
-![](img/purrr_logo.png){fig-align="center"}
+![](img/purrr.jpg){fig-align="center"}
 
 Ahhh, a friendly cat...
 
 ## Scary functional programming
 
-![](img/purrr_logo.png){fig-align="center"}
+![](img/purrr.jpg){fig-align="center"}
 
 Run away now!
 

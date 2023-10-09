@@ -439,6 +439,11 @@ purrr::map(
 ![](img/Metric 4_spc.png){.absolute top=320 left=300 width="600" height="300" .fragment}
 ![](img/Metric 5_spc.png){.absolute top=400 left=400 width="600" height="300" .fragment}
 
+## In summary
+
+![](img/sausage-machine.jpg){.absolute top=100 left=100 width="800"}
+![](img/purrr.jpg){.absolute top=430 left=500 width="80"}
+
 
 ## Some things we haven't covered
 

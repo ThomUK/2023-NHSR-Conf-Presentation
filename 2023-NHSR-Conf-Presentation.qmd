@@ -278,7 +278,7 @@ purrr::map(.x, .f)
 :::: columns
 ::: {.column width="30%" .fragment .centre}
 .x  
-![](img/ikea-x.avif){width=300}
+![](img/ikea-x.jpg){width=300}
 :::
 ::: {.column width="30%" .fragment .centre}
 .f  
@@ -289,7 +289,7 @@ purrr::map(.x, .f)
 :::
 ::: {.column width="30%" .fragment .centre}
 result  
-![](img/ikea-res.avif){width=300}
+![](img/ikea-res.jpg){width=300}
 :::
 ::::
 
